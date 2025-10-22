@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anniversary Tahun Ke-3 Akmal & Syeiriena 💞</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffd1dc);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+    h1 {
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      font-size: 2rem;
+    }
+    #btnRaikan {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    #btnRaikan:hover {
+      transform: scale(1.05);
+      background: #ff1493;
+    }
+    #mesej {
+      margin-top: 30px;
+      color: #fff;
+      font-size: 1.3rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 2s ease, transform 2s ease;
+    }
+    .tampil {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    .hati {
+      position: absolute;
+      color: rgba(255,255,255,0.8);
+      animation: jatuhHati 5s linear infinite;
+      font-size: 1.5rem;
+    }   
+    @keyframes jatuhHati {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* Respect user's reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .hati { animation: none; }
+      #mesej { transition: none; }
+      #btnRaikan { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <h1>💞Anniversary Tahun Ke-3 Akmal & Syeiriena 💞</h1>
+  <button id="btnRaikan">Tekan Sini Sayanggg ❤️</button>
+  <p id="mesej">Happy Anniversary sayangku yang ke-3 Tahun 💖<br>
+     (Sayang,
+
+Hari ni genap tiga tahun kita sama-sama berjalan dalam cerita yang kita cipta sendiri. Tiga tahun yang penuh tawa, air mata, marah, rindu, dan kasih yang tak pernah habis. 
+Kadang-kadang kita jatuh, kadang kita terguris, tapi entah macam mana… kita tetap temui jalan untuk kembali genggam tangan masing-masing semula. <br>
+
+Sayang tahu tak, setiap kali saya pandang awak, hati saya tenang. Macam dunia ni berhenti sekejap, dan yang tinggal cuma kita — dua insan yang belajar erti cinta satu sama lain, tanpa perlu jadi sempurna. 
+Syeiriena Nabiella, awak bukan sekadar orang yang saya sayang, awak rumah yang selalu saya cari bila semuanya terasa sesak. Awak tempat saya belajar sabar, belajar menghargai, dan belajar mencintai dengan cara yang lebih matang. <br>
+
+Tiga tahun ni, saya bukan nak kenang apa yang dah berlalu je — tapi nak hargai setiap langkah yang dah buat kita sampai sini. Terima kasih sebab masih pilih saya, walaupun saya bukan yang terbaik. 
+Terima kasih sebab sentiasa ada, walau saya kadang susah nak difahami. Dan terima kasih sebab buat saya percaya, cinta sejati memang wujud bila dua orang betul-betul nak pertahankan antara satu sama lain. <br>
+
+Saya janji, selagi saya masih bernafas, cinta saya untuk awak takkan pernah hilang. Dia mungkin berubah cara, tapi bukan rasa. Dalam setiap doa saya, selalu ada nama awak. 
+Dalam setiap hari saya, selalu ada bayang awak. Dan dalam setiap masa depan yang saya impikan, saya tetap nampak awak di situ — senyum, macam selalu. <br>
+
+Selamat ulang tahun yang ke-3, sayang.
+Saya cinta awak. Sentiasa, dan selamanya.
+
+Dengan sepenuh hati,
+— orang yang takkan pernah berhenti sayang awak.)</p>
+
+  <audio id="lagu" src="romantic-saxophone-244539.mp3"></audio>
+
+  <script>
+    const btn = document.getElementById('btnRaikan');
+    const mesej = document.getElementById('mesej');
+    const lagu = document.getElementById('lagu');
+
+    btn.addEventListener('click', async () => {
+      try {
+        lagu.volume = 0;
+        await lagu.play();
+        fadeIn(lagu);
+      } catch (e) {
+        alert('Klik semula jika lagu tidak dimainkan ❤️');
+      }
+      mesej.classList.add('tampil');
+      mesej.setAttribute('aria-hidden', 'false');
+      btn.setAttribute('aria-expanded', 'true');
+      buatHati();
+    });
+
+    function fadeIn(audio) {
+      let vol = 0;
+      const fade = setInterval(() => {
+        if (vol < 1) {
+          vol += 0.05;
+          audio.volume = vol;
+        } else {
+          clearInterval(fade);
+        }
+      }, 200);
+    }
+
+    function buatHati() {
+      for (let i = 0; i < 30; i++) {
+        const hati = document.createElement('div');
+        hati.classList.add('hati');
+        hati.innerHTML = '💖';
+        hati.style.left = Math.random() * 100 + 'vw';
+        hati.style.fontSize = Math.random() * 20 + 15 + 'px';
+        hati.style.animationDuration = Math.random() * 3 + 3 + 's';
+        document.body.appendChild(hati);
+        setTimeout(() => hati.remove(), 6000);
+      }
+    }
+  </script>
+</body>
+</html>
